@@ -4,8 +4,8 @@
   "description": "just a typescript course notes and cheat-sheets",
   "main": "index.js",
   "scripts": {
-    "start": "tsc *.ts",
-    "clean": "rm -rf *.js"
+    "start": "tsc src/*.ts",
+    "clean": "rm -rf dist/*.js"
   },
   "repository": {
     "type": "git",

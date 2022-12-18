@@ -1,5 +1,5 @@
-JS 	= *.js
-TS	= *.ts
+JS 	= ${addprefix dist/, *.js}
+TS	= ${addprefix src/, *.ts}
 RM 	= rm -rf
 TSC = tsc
 INDEX = index.js
