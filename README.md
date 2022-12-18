@@ -46,10 +46,12 @@ This will produce a `tsconfig.json` file, from which we can configure our `tsc` 
 
 Lines that need to be configured:
 
-```json
-/* Line 14 */ "target": "ES6" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-/* Line 29 */ "rootDir": "./src" /* Specify the root folder within your source files. */,
-/* Line 52 */ "outDir": "./dist" /* Specify an output folder for all emitted files. */,
-/* Line 53 */ "removeComments": true /* Disable emitting comments. */,
-/* Line 66 */ "noEmitOnError": true /* Disable emitting files if any type checking errors are reported. */,
+```xml
+{
+  /* Line 14 */ "target": "ES6" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+  /* Line 29 */ "rootDir": "./src" /* Specify the root folder within your source files. */,
+  /* Line 52 */ "outDir": "./dist" /* Specify an output folder for all emitted files. */,
+  /* Line 53 */ "removeComments": true /* Disable emitting comments. */,
+  /* Line 66 */ "noEmitOnError": true /* Disable emitting files if any type checking errors are reported. */
+}
 ```
