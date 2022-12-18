@@ -1,0 +1,26 @@
+{
+  "name": "tsnotes",
+  "version": "1.0.0",
+  "description": "just a typescript course notes and cheat-sheets",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc *.ts",
+    "clean": "rm -rf *.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdoachhoubi/tsnotes.git"
+  },
+  "keywords": [
+    "tsc",
+    "js",
+    "ts",
+    "typescript"
+  ],
+  "author": "astroboy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdoachhoubi/tsnotes/issues"
+  },
+  "homepage": "https://github.com/abdoachhoubi/tsnotes#readme"
+}
