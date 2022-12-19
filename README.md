@@ -2,9 +2,21 @@
 
 Just my TypeScript course notes ^\_^
 
+## Table of content
+
+1. [What is Typescript?](#What-is-Typescript?)
+2. [Features of TypeScript:](#Features-of-TypeScript:)
+3. [Downbacks?](#Downbacks?)
+4. [Compile .ts files](#Compile-.ts-files)
+5. [Configure the tsc compiler](#Configure-the-tsc-compiler)
+6. [Debugging](#Debugging:)
+7. [Data Types](#Data-Types:)
+
 ## What is Typescript?
 
-It's a programming language to address shortcoming of JavaScript.
+TypeScript is a programming language that is a super set of JavaScript. It is developed and maintained by Microsoft. TypeScript adds optional static typing and class-based object-oriented programming to JavaScript.
+
+TypeScript is designed to be a typed superset of JavaScript that compiles to plain JavaScript, which means that any valid JavaScript code is also valid TypeScript code. This makes it easy for developers to incorporate TypeScript into their existing JavaScript codebase, as well as use existing JavaScript libraries in their TypeScript code.
 
 ## Features of TypeScript:
 
@@ -13,7 +25,7 @@ It's a programming language to address shortcoming of JavaScript.
 - Refactoring
 - Shorthand notations
 
-# Downbacks?
+## Downbacks?
 
 - Compilation process (can take time)
 - Discipline in coding (Which seems to be frasturating somehow)
@@ -123,3 +135,73 @@ Now, we need to add the following configurations:
 - `program` used to specify the file that the debugger should launch or attach to when it starts
 - `preLaunchTask` used to specify a task that should be run before the debugger starts.
 - `outFiles` used to specify a list of files that should be excluded from the debugger's source map
+
+## Data Types:
+
+### Javascript primitive data types:
+
+- `boolean`: Represents a true or false value.
+- `number`: Represents integers and floating point numbers.
+- `string`: Represents a sequence of characters.
+- `null`: Represents the absence of a value.
+- `undefined`: Represents the absence of a value or a value that has not been initialized.
+
+### Javascript complex data types:
+
+- `object`: Represents a collection of key-value pairs.
+- `array`: Represents a collection of values of the same data type.
+- `function`: Represents a block of code that can be called by name.
+
+### TypeScript introduces new types:
+
+- `tuple`: Represents a fixed-size collection of values of different data types.
+- `enum`: Represents a set of named constants.
+- `any`: Represents a value of any data type.
+- `void`: Represents the absence of a value or the lack of a return type for a function.
+
+Be careful from the `any` type because it must not be used unless it's necessary, because it disables the major feature of TypeScript which is type annotation.
+
+And you should be aware that even though `tuple` is a fixed sized array, you can still use the array `push()` method on it which my cause bugs or errors.
+
+### The `unknown` data type
+
+In TypeScript, the `unknown` type is a type that represents a value that could be anything. It is similar to the `any` type, but it is more strict in that it requires you to perform type checking before using the value in a type-safe way.
+
+Example:
+
+```ts
+let x: unknown;
+
+x = "hello";
+x = 123;
+
+console.log(x.toUpperCase()); // Error: x could be a number, which does not have a toUpperCase method
+
+if (typeof x === "string") {
+  console.log(x.toUpperCase()); // OK
+}
+```
+
+### The `enum` data type
+
+An enum is a way to define a set of named constants in TypeScript.
+
+Example:
+
+```ts
+const enum DaysOfWeek {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday,
+}
+
+const day: DaysOfWeek = DaysOfWeek.Monday;
+
+if (day === DaysOfWeek.Monday) {
+  console.log("It is Monday");
+}
+```
