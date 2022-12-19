@@ -55,3 +55,27 @@ Lines that need to be configured:
   /* Line 66 */ "noEmitOnError": true /* Disable emitting files if any type checking errors are reported. */
 }
 ```
+
+Now after we finished ssetting up the `tsconfig` file, we can easily compile all of our `.ts` file by running the command `tsc` without adding any arguments.
+
+I created a `package.json` file that comes in handy when dealing with scripts and package managing.
+
+I added some useful scripts:
+
+```json
+"scripts": {
+	"start":	"tsc",								// used to compile all .ts files
+	"clean":	"rm -rf src/*.js",					// removes all .js files from src folder
+	"fclean":	"npm run clean; rm -rf dist",		// removes all .js files
+	"re":		"npm run fclean; npm start"			// revoves all .js files and recompiles all .ts files
+}
+```
+
+Now:
+
+```bash
+$ npm start			# compiles all .ts files
+$ npm run clean		# removes all .js files from src folder
+$ npm run fclean	# removes all .js files
+$ npm run re		# revoves all .js files and recompiles all .ts files
+```
