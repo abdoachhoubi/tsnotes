@@ -64,10 +64,10 @@ I added some useful scripts:
 
 ```json
 "scripts": {
-	"start":	"tsc",								// used to compile all .ts files
-	"clean":	"rm -rf src/*.js",					// removes all .js files from src folder
-	"fclean":	"npm run clean; rm -rf dist",		// removes all .js files
-	"re":		"npm run fclean; npm start"			// revoves all .js files and recompiles all .ts files
+	"start":	"tsc",
+	"clean":	"rm -rf src/*.js",
+	"fclean":	"npm run clean; rm -rf dist",
+	"re":		"npm run fclean; npm start"
 }
 ```
 
