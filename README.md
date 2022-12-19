@@ -74,8 +74,50 @@ I added some useful scripts:
 Now:
 
 ```bash
-$ npm start			# compiles all .ts files
+$ npm run dev		# compiles all .ts files
 $ npm run clean		# removes all .js files from src folder
 $ npm run fclean	# removes all .js files
 $ npm run re		# revoves all .js files and recompiles all .ts files
 ```
+
+## Debugging:
+
+We need to go back to `tsconfig.json` and activate the line:
+
+```xml
+{
+	/* Line 50 */ "sourceMap": true	/* Create source map files for emitted JavaScript files. */
+}
+```
+
+That line will create source map files for emitted `.js` files, and they will be used by debuggers!
+
+Now to start debugging our code, we need to open the debuggging panel and create a `lunch.json`, file wich will contain all our debugging configurations.
+
+Now, we need to add the following configurations:
+
+```json
+"configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "skipFiles": [
+		"<node_internals>/**"
+		],
+      "program": "${workspaceFolder}/src/index.ts",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "outFiles": [
+		"${workspaceFolder}/**/*.js"
+		]
+  	}
+]
+```
+
+- `type` used to specify the type of configuration for the debugger
+- `request` used to specify the type of debugging action to be taken when the debugger starts
+- `name` just an alias of the benugging session
+- `skipFiles` array of files that shouldn't be included in the debugging session
+- `program` used to specify the file that the debugger should launch or attach to when it starts
+- `preLaunchTask` used to specify a task that should be run before the debugger starts.
+- `outFiles` used to specify a list of files that should be excluded from the debugger's source map
