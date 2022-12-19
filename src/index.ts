@@ -5,10 +5,11 @@ let n: number = 12;
 
 // Now we can't assign another data type to n
 // n = "hi"; Type 'string' is not assignable to type 'number'.
+console.log(n);
 
-// We can also annotate arguments of functions
-const add = (num1: number, num2: number) => {
-  return num1 + num2;
-};
-
-console.log(add(4, 2));
+// Data Types
+const nbr: number = 2; // Number
+const str: string = "Hi"; // String
+const bool: boolean = true; // Boolean
+let a: any = "Hi"; // Any
+const un: unknown = 0; // Uknown
