@@ -8,8 +8,10 @@ let n: number = 12;
 console.log(n);
 
 // Data Types
-const nbr: number = 2; // Number
-const str: string = "Hi"; // String
-const bool: boolean = true; // Boolean
-let a: any = "Hi"; // Any
-const un: unknown = 0; // Uknown
+let nbr: number; // Number
+let str: string; // String
+let bool: boolean; // Boolean
+let a: any; // Any
+let un: unknown; // Unknown
+let arr: number[]; // Array (can only hold numbers)
+let tup: [string, number]; // Tuple that can only hold two elements
