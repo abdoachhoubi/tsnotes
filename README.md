@@ -1,5 +1,7 @@
 # Typescript notes
 
+Just my TypeScript course notes ^\_^
+
 ## What is Typescript?
 
 It's a programming language to address shortcoming of JavaScript.
