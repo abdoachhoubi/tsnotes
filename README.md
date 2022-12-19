@@ -10,7 +10,7 @@ Just my TypeScript course notes ^\_^
 4. [Compile .ts files](#compile-.ts-files)
 5. [Configure the tsc compiler](#configure-the-tsc-compiler)
 6. [Debugging](#debugging)
-7. [Data Types](#Dtata-types)
+7. [Data Types](#data-types)
 
 ## What is Typescript?
 
