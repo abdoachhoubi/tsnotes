@@ -4,13 +4,13 @@ Just my TypeScript course notes ^\_^
 
 ## Table of content
 
-1. [What is Typescript?](#What-is-Typescript?)
-2. [Features of TypeScript:](#Features-of-TypeScript:)
-3. [Downbacks?](#Downbacks?)
-4. [Compile .ts files](#Compile-.ts-files)
-5. [Configure the tsc compiler](#Configure-the-tsc-compiler)
-6. [Debugging](#Debugging:)
-7. [Data Types](#Data-Types:)
+1. [What is Typescript?](#what-is-typescript)
+2. [Features of TypeScript:](#features-of-typeScript)
+3. [Downbacks?](#downbacks?)
+4. [Compile .ts files](#compile-.ts-files)
+5. [Configure the tsc compiler](#configure-the-tsc-compiler)
+6. [Debugging](#debugging)
+7. [Data Types](#Dtata-types)
 
 ## What is Typescript?
 
