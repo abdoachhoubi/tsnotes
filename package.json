@@ -4,8 +4,10 @@
   "description": "just a typescript course notes and cheat-sheets",
   "main": "index.js",
   "scripts": {
-    "start": "tsc src/*.ts",
-    "clean": "rm -rf dist/*.js"
+    "start": "tsc",
+    "clean": "rm -rf src/*.js",
+    "fclean": "npm run clean; rm -rf dist",
+    "re": "npm run fclean; npm start"
   },
   "repository": {
     "type": "git",
@@ -17,8 +19,8 @@
     "ts",
     "typescript"
   ],
-  "author": "astroboy",
-  "license": "ISC",
+  "author": "astro",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/abdoachhoubi/tsnotes/issues"
   },
