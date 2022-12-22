@@ -11,6 +11,9 @@ Just my TypeScript course notes ^\_^
 5. [Configure the tsc compiler](#configure-the-tsc-compiler)
 6. [Debugging](#debugging)
 7. [Data Types](#data-types)
+8. [Functions](#functions)
+9. [Objects](#objects)
+10. [Advanced Types](#advanced-types)
 
 ## What is Typescript?
 
@@ -112,16 +115,16 @@ Now, we need to add the following configurations:
 
 ```json
 "configurations": [
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Program",
-      "skipFiles": [
+	{
+	  "type": "node",
+	  "request": "launch",
+	  "name": "Launch Program",
+	  "skipFiles": [
 		"<node_internals>/**"
 		],
-      "program": "${workspaceFolder}/src/index.ts",
-      "preLaunchTask": "tsc: build - tsconfig.json",
-      "outFiles": [
+	  "program": "${workspaceFolder}/src/index.ts",
+	  "preLaunchTask": "tsc: build - tsconfig.json",
+	  "outFiles": [
 		"${workspaceFolder}/**/*.js"
 		]
   	}
@@ -162,6 +165,16 @@ Now, we need to add the following configurations:
 Be careful from the `any` type because it must not be used unless it's necessary, because it disables the major feature of TypeScript which is type annotation.
 
 And you should be aware that even though `tuple` is a fixed sized array, you can still use the array `push()` method on it which my cause bugs or errors.
+
+### The `number` data type in Typescript:
+
+In TypeScript we can separate big numbers using an unserscore `_`
+
+Example:
+
+```ts
+const n: number = 123_456_789_0;
+```
 
 ### The `unknown` data type
 
@@ -204,4 +217,190 @@ const day: DaysOfWeek = DaysOfWeek.Monday;
 if (day === DaysOfWeek.Monday) {
   console.log("It is Monday");
 }
+```
+
+## Functions
+
+In TypeScript we can annotate function parameters and also the return value.
+
+Example:
+
+```ts
+// By adding the type after the params list we can define our return value type
+function multiply(num1: number, num2: number): number {
+  return num1 * num2;
+}
+```
+
+We can also use a compiler option in `tsconfig.json` called `noUnusedParameters` to avoid declaring a param without using it in a function.
+
+```xml
+/* Line 89 */	"noUnusedParameters": true /* Raise an error when a function parameter isn't read. */,
+```
+
+There's also an option that detects unused local variables:
+
+```xml
+/* Line 88 */	"noUnusedLocals": true,	/* Enable error reporting when local variables aren't read. */
+```
+
+In JavaScript, if a function doesn't reach the `return` statement it returns `undefined` by default. But that may cause a lot of bugs and troubles.
+
+To avoid facing that problem in TypeScript we can use another compiler option:
+
+```xml
+/* Line 91 */	"noImplicitReturns": true,	/* Enable error reporting for codepaths that do not explicitly return in a function. */
+```
+
+We can make an argument optional by adding a `?` next to it, or we can assign to it a default value:
+
+```ts
+// We can do it this way
+function multiply(num1: number, num2?: number): number {
+  return num2 ? num1 * num2 : num1;
+}
+
+// Or this way
+function multiply(num1: number, num2?: number): number {
+  return num1 * (num2 || 1);
+}
+
+// Or this way
+function multiply(num1: number, num2 = 1): number {
+  return num1 * num2;
+}
+```
+
+## Objects
+
+Objects in TypeScript are more fun!
+
+We can annotate each property, make it optional, or even read only!
+
+Example:
+
+```ts
+const user: {
+  readonly id: number;
+  name: string;
+  email?: string;
+  multiply: (num1: number, num2: number) => void;
+} = {
+  id: 0,
+  name: "Astro",
+  multiply: (num1: number, num2: number) => {
+    console.log(num1 * num2);
+  },
+};
+
+user.email = "aachhoub@gmail.com";
+```
+
+## Advanced Types
+
+In this part we'll get to know more advanced types concepts:
+
+- [Type Aliases](#type-aliases)
+- [Unions and Intersections](#unions-and-intersections)
+- [Type Narrowing](#type-narrowing)
+- [Nullable Types](#nullable-types)
+
+### Type Aliases
+
+A Type Alias is a TypeScript featue that allow us to make our own custom types, it's like the `typedef in C`
+
+Example:
+
+```ts
+type User = {
+  readonly id: number;
+  name: string;
+  email?: string;
+  multiply: (num1: number, num2: number) => void;
+};
+
+// Now we can go back to our objects and redefine it using this alias
+const user: User = {
+  id: 0,
+  name: "Astro",
+  multiply: (num1: number, num2: number) => {
+    console.log(num1 * num2);
+  },
+};
+
+user.email = "aachhoub@gmail.com";
+```
+
+### Unions and Intersections
+
+In TypeScript we can give a variable two different types:
+
+```ts
+let x: number | boolean;
+// This is what's called type union
+```
+
+An intersection in typescript is when a variable can have more than one type at the same time.
+
+Example:
+
+```ts
+type Movable = {
+  move: () => void;
+};
+
+type Removable = {
+  remove: () => void;
+};
+
+// Wrraping both types into one tyle
+type UIObject = Movable & Removable;
+
+// The `card` variable is both Movable and Removable
+let card: UIObject = {
+  move: () => {
+    console.log("Moving the object!");
+  },
+  remove: () => {
+    console.log("Removing the object! ");
+  },
+};
+```
+
+We can use unions with Literal types:
+
+```ts
+type Quantity = 10 | 30 | 50 | 70 | 100;
+type Metric = "cm" | "inch";
+
+let quantity: Quantity = 30;
+let metric: Metric = "cm";
+
+// Now `quantity` can only accept the values: 10 ,30, 50, 70 and 100.
+// Amd `metric` can either be 'cm' or 'inch'.
+```
+
+### Type Narrowing
+
+It's a trick we use when we don't know exactly what's the type of a variable.
+
+Example:
+
+```ts
+type Weight = number | string;
+
+function sqr(num1: Weight): number {
+  if (typeof num1 === number) return num1 * num1;
+  return parseInt(num1) * parseInt(num1);
+}
+```
+
+### Nullable Types
+
+In JavaScript `null` and `undefined` are the Number One source of bugs!<br />
+But in Typescript, thanks to the `strict` config rule, we can avoid that!<br />
+in case you're not using the `strict` rule, you can activate the rule `strictNullChecks`.
+
+```xml
+/* Line 89 */	"strictNullChecks": true	/* When type checking, take into account 'null' and 'undefined'. */,
 ```
