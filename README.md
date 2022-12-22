@@ -1,6 +1,7 @@
 # Typescript notes
 
-Just my TypeScript course notes ^\_^
+Just my TypeScript course notes ^\_^<br />
+These notes contain only the basics of TypeScript!
 
 ## Table of content
 
